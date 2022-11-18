@@ -1,22 +1,14 @@
-import css from './Contact.module.css';
+import { useDeleteContactMutation } from 'redux/api';
 
-import { useDispatch } from 'react-redux';
-import { deleteContacts } from '../../redux/contacts';
-
-function Contact({ id, name, number }) {
-
-    const dispatch = useDispatch();
-
-    const deleteContact = () => {
-        dispatch(deleteContacts(id));
-    };
+function Contact({ id, number, name }) {
+    const [deleteContact, { isLoading }] = useDeleteContactMutation();
 
     return (
-        <li className={css.Contact}>
+        <li>
             {name + ': ' + number}
             <button
-                className={css.Contact__button}
-                onClick={() => deleteContact()}
+                onClick={() => deleteContact(id)}
+                disabled={isLoading}
             >
                 Delete
             </button>
@@ -25,6 +17,36 @@ function Contact({ id, name, number }) {
 }
 
 export default Contact;
+
+// HW-06 ==========================================================================
+
+// import css from './Contact.module.css';
+
+// import { useDispatch } from 'react-redux';
+// import { deleteContacts } from '../../redux/contacts';
+
+// function Contact({ id, name, number }) {
+
+//     const dispatch = useDispatch();
+
+//     const deleteContact = () => {
+//         dispatch(deleteContacts(id));
+//     };
+
+//     return (
+//         <li className={css.Contact}>
+//             {name + ': ' + number}
+//             <button
+//                 className={css.Contact__button}
+//                 onClick={() => deleteContact()}
+//             >
+//                 Delete
+//             </button>
+//         </li>
+//     );
+// }
+
+// export default Contact;
 
 // HW-04 ==========================================================================
 

@@ -1,30 +1,57 @@
-import css from './ContactFilter.module.css';
-
+import { Fragment } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setFilter } from '../../redux/filter';
 
-function ContactFilter() {
-
+function Filter() {
     const value = useSelector(state => state.filter.value);
     const dispatch = useDispatch();
-    const handleChange = event => {
-        dispatch(setFilter(event.target.value));
+    const handleChange = e => {
+        dispatch(setFilter(e.target.value));
     };
 
     return (
-        <div className={css.ContactFilter}>
+        <Fragment>
             <p>Find contacts by name</p>
             <input
                 type="text"
-                className={css.ContactFilter__input}
                 value={value}
                 onChange={handleChange}
             />
-        </div>
-    )
+        </Fragment>
+    );
 }
 
-export default ContactFilter;
+export default Filter;
+
+// HW-06 ==========================================================================
+
+// import css from './ContactFilter.module.css';
+
+// import { useSelector, useDispatch } from 'react-redux';
+// import { setFilter } from '../../redux/filter';
+
+// function ContactFilter() {
+
+//     const value = useSelector(state => state.filter.value);
+//     const dispatch = useDispatch();
+//     const handleChange = event => {
+//         dispatch(setFilter(event.target.value));
+//     };
+
+//     return (
+//         <div className={css.ContactFilter}>
+//             <p>Find contacts by name</p>
+//             <input
+//                 type="text"
+//                 className={css.ContactFilter__input}
+//                 value={value}
+//                 onChange={handleChange}
+//             />
+//         </div>
+//     )
+// }
+
+// export default ContactFilter;
 
 // HW-04 ==========================================================================
 
