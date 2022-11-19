@@ -1,6 +1,6 @@
-import { Fragment } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setFilter } from '../../redux/filter';
+import css from './ContactFilter.module.css';
 
 function Filter() {
     const value = useSelector(state => state.filter.value);
@@ -10,14 +10,15 @@ function Filter() {
     };
 
     return (
-        <Fragment>
+        <div className={css.ContactFilter}>
             <p>Find contacts by name</p>
             <input
                 type="text"
+                className={css.ContactFilter__input}
                 value={value}
                 onChange={handleChange}
             />
-        </Fragment>
+        </div>
     );
 }
 

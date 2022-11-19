@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useAddContactMutation, useGetContactsQuery } from '../../redux/api';
+import css from './ContactForm.module.css';
 
 const ContactForm = () => {
     const [addContact, { isLoading }] = useAddContactMutation();
@@ -46,11 +47,12 @@ const ContactForm = () => {
     };
 
     return (
-        <div>
+        <div className={css.ContactForm}>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="">
+                <label className={css.ContactForm__label}>
                     Name
                     <input
+                        className={css.ContactForm__input}
                         onChange={handleChange}
                         type="text"
                         name="name"
@@ -61,9 +63,10 @@ const ContactForm = () => {
                     />
                 </label>
                 <br />
-                <label htmlFor="">
-                    Number
+                <label className={css.ContactForm__label}>
+                    Phone
                     <input
+                        className={css.ContactForm__input}
                         onChange={handleChange}
                         type="tel"
                         name="phone"
@@ -74,8 +77,12 @@ const ContactForm = () => {
                     />
                 </label>
                 <br />
-                <button type="submit" disabled={isLoading}>
-                    Submit
+                <button
+                    className={css.ContactForm__button}
+                    type="submit"
+                    disabled={isLoading}
+                >
+                    + Add contact
                 </button>
             </form>
         </div>
